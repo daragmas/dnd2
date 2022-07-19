@@ -20,21 +20,28 @@ const CreateCharacter = () => {
 
     const [selectedCharImg, setSelectedCharImg] = useState()
 
-    const handleCharSelect = (e) =>{
+    const handleCharSelect = (e) => {
         setSelectedCharImg(`${baseImgUrl}${e.target.value}`)
     }
 
-    return(
+    return (
         <div>
             <h1>Create A Character</h1>
-            <img src={selectedCharImg} className='selected-char-img'/>
-            <select onChange={handleCharSelect}>
-                {
-                    Object.keys(portraitMap).map((element)=>{
-                        <option value={portraitMap[element]}>{element}</option>
-                    })
-                }
-            </select>
+            <div className="char-select-container">
+                <div>
+                    <input type={'text'} className='char-name' placeholder="Name your character"></input>
+                    <select onChange={handleCharSelect} className='class-select'>
+                        {
+                            Object.keys(portraitMap).map((element) => {
+                                <option value={portraitMap[element]}>{element}</option>
+                            })
+                        }
+                    </select>
+                </div>
+                <div>
+                    <img src={selectedCharImg} className='selected-char-img' />
+                </div>
+            </div>
         </div>
     )
 }
